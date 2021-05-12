@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sandbox - Home</title>
+    <meta charset="utf-8">  
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1">  
+    <link rel="stylesheet" href="root.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="content.css">
+    <link rel="stylesheet" href="colors.css">
+    <link rel="stylesheet" href="buttons.css">
+    <link rel="stylesheet" href="inputs.css">
+
+    <script src="./js/index.js"></script>
+    <script src="./js/test.js"></script>
+    <script src="./js/button.js"></script>
+
+</head>
+
+<div class="main">
+
+<header>
+    <div id="title">SANDBOX</div>
+</header>
+
+
+<div class="sidebar">
+    <a class="nav-link active" href="#">Design</a>
+    <a class="nav-link" href="./Useful-Links.html">Useful Links</a>
+    <a class="nav-link" href="#">About</a>
+</div>
+
+<div class="intro content">
+    <p>Hi there. Welcome to sandbox. This is where I test styling ideas and practice CSS & Javascript</p>
+    <p>This site was written with vanilla javascript, CSS and html. Full code can be found 
+        <a hraf="https://github.com/TheIthorian/Sandbox">here</a>.</p>
+    <h3>Todo:</h3>
+    <ul>
+        <li>Add input styling</li>
+        <li>Save colors to data object</li>
+    </ul>
+    <br><h3>Check out my other projects on GitHub:</h3>
+    <ul>
+        <li><a href="https://github.com/TheIthorian">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/ben-shortland-392378150/">LinkedIn</a></li>
+    </ul>
+    <div><button class="tirtiary" onclick="(function(){localStorage.clear();}())">Clear localStorage (Resets colors)</button></div>
+</div>
+
+<div class="content left">
+
+    <div class="bordered-box" id="colors">
+        <h1>Colors</h1>
+        <p>Feel free to change the colors using the pickers for each section which will alter the style of the entire page.
+            The colors are saved so don't worry about refreshing the page.
+        </p>
+        <p>You can also import colors from 
+            <a href="https://coolors.co/">https://coolors.co/</a>
+            by pasting the link to the input below.
+        </p>
+        <div class="color-container">
+            <div class="color-block" style="--color: var(--header-background-dark)">
+                <span>Header</span>
+                <span>(#2B4964)</span>
+                <input id="header-color-picker" type="color" value="#2B4964" onChange="changeColor(this)"/>
+                <input class="color-lock" type="checkbox">
+            </div>
+            <div class="color-block" style="--color: var(--body-background-dark)">
+                <span>Background</span>
+                <span>(#2B333A)</span>
+                <input id="background-color-picker" type="color" value="#2B333A" onChange="changeColor(this)"/>
+                <input class="color-lock" type="checkbox">
+            </div>
+            <div class="color-block" style="--color: var(--body-background-dark2)">
+                <span>Background 2</span>
+                <span>(#4a4a4f)</span>
+                <input id="background-color2-picker" type="color" value="#4a4a4f" onChange="changeColor(this)"/>
+                <input class="color-lock" type="checkbox">
+            </div>
+            <div class="color-block contrast" style="--color: var(--highlight)">
+                <span>Highlight</span>
+                <span>(#F07B48)</span>
+                <input id="highlight-color-picker" type="color" value="#F07B48" onChange="changeColor(this)"/>
+                <input class="color-lock" type="checkbox">
+            </div>
+            <div class="color-block contrast" style="--color: var(--text-light)">
+                <span>Text</span>
+                <span>(#ECE5F0)</span>
+                <input id="text-color-picker" type="color" value="#ECE5F0" onChange="changeColor(this)"/>
+                <input class="color-lock" type="checkbox">
+            </div>
+        </div>
+        
+        <div class="color-button-container">
+            <div class="input-group">
+                <label for="coolers-link" >Coolers Link:</label>
+                <input name="coolers-link" id="coolers-link" type="text" >
+                <button class="primary thin" onclick="useCoolersLink()">Save</button>
+            </div>
+            <button class="secondary" id="resetColors" onclick="resetColors()">Reset colors</button>
+            <button class="secondary" id="randomiseColors" onclick="randomiseColors()">Random colors</button>
+            <div class="break"></div>
+        </div>
+        <br><h2>Other interesting color schemes:</h2>
+        <div class="color-container small">
+            <div class="color-block small" style="--color: #2C2937"></div>
+            <div class="color-block small" style="--color: #29202B"></div>
+            <div class="color-block small" style="--color: #EA5A5A"></div>
+            <div class="color-block small contrast" style="--color: #ffffff"></div>
+        </div>
+        <div class="color-container small">
+            <div class="color-block small" style="--color: #5a255c"></div>
+            <div class="color-block small" style="--color: #206175"></div>
+            <div class="color-block small" style="--color: #d25944"></div>
+            <div class="color-block small contrast" style="--color: #dbd337"></div>
+            <div class="color-block small contrast" style="--color: #ffffff"></div>
+        </div>
+    </div>
+
+    <div class="bordered-box" id="heading-style">
+        <h1>Heading style</h1>
+        <p>Here's a display of the different heading types from h1 to h3. 
+            I didn't bother with anything over h3 since they're about the 
+            same size as the "p" element.</p>
+        <p>New paragraphs have a spacing before, whereas the headings have spacing before and after.</p>
+        <h3>Below are samples of each type:</h3>
+        <div class="bordered-box">
+            <h1>h1: Heading</h1>
+            <h2>h2: Sub heading</h2>
+            <h3>h3: Highlight</h3>
+            <p>p: Paragraph</p>
+        </div>
+        <p>Clicking a h1 title will cause its contents to collapse.</p>
+        <div>
+            <div class="code-title-container">
+                <span class="hidden code-title">Example CSS</span>
+                <button class="code-copy">Copy</button>
+            </div>
+            <pre class="hidden" style="height:400px;" id="heading-style-code">
+<code>div.content {
+    background-color: var(--body-background-dark);
+    max-width: 100%;
+    padding: 20px;
+
+    word-wrap: break-word;
+
+    font-style: normal;
+    font-weight: 200;
+    letter-spacing: 0.1em;
+}
+
+div.content h1,
+div.content h2,
+div.content h3,
+div.content h4,
+div.content p {
+    font-style: normal;
+    font-weight: 200;
+    letter-spacing: 0.1em;
+    width: auto;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+div.content h1 {
+    font-weight: 400;
+    margin: 10px 0px 20px 0px;
+    padding: 0px 0px 10px 0px;
+    border-bottom: solid 2px var(--highlight);
+    color: var(--text-light);
+}
+div.content h2, 
+div.content h3 {
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+div.content p {
+    margin-bottom: 15px;
+}</code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="bordered-box" id="Navbar">
+        <h1>Navbar</h1>
+        <p>The navbar on this page uses flexbox to contain the links. Each item is an anchor with a simple 
+            "::after" tranisition for the underline.</p>
+        <div>
+            <div class="code-title-container">
+                <span class="hidden code-title">Example CSS</span>
+                <button>Copy</button>
+            </div>
+            <pre class="hidden" style="height:400px;" id="navbar-code">
+<code>div.sidebar {
+    grid-area: sidebar;
+    background-color: var(--body-background-dark);
+    border-right: solid 1px var(--highlight);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Link items */
+.sidebar > a.nav-link {
+    padding: 10px;
+    margin-top: 10px;
+
+    font-style: normal;
+    font-weight: 100;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    color: var(--text-light);
+
+    display: inline-block;
+    text-align: center;
+
+    transition: 
+        letter-spacing 1000ms ease, 
+        color          1000ms ease,
+        border         1000ms ease;
+    
+}
+.sidebar > a.nav-link:first-child {
+    margin-top: 60px;
+}
+
+/* https://www.w3schools.com/css/tryit.asp?filename=trycss3_transition_speed */
+.sidebar > a.nav-link:hover {
+    letter-spacing: 0.3em;
+    color: var(--highlight);
+} 
+
+.sidebar > a.nav-link::after {
+    content: "";
+    width: 0px;
+    height: 1px;
+    display: block;
+    background: var(--highlight);
+    transition: 300ms;
+}
+.sidebar > a.nav-link:hover::after {
+    width: 95%;
+}
+
+/* Current page */
+.sidebar > a.nav-link.active {
+    color: var(--highlight);
+}
+.sidebar > a.nav-link.active::after {
+    content: "";
+    width: 95%;
+    height: 1px;
+    display: block;
+    background: var(--highlight);
+    transition: 300ms;
+}</code>
+            </pre>
+        </div>    
+    </div>
+</div>
+
+
+<div class="content right">
+
+    <div class="bordered-box" id="buttons">
+        <h1>Buttons</h1>
+        <p>For more info on styling buttons: 
+            <a href="https://ishadeed.com/article/styling-the-good-old-button/">
+                https://ishadeed.com/article/styling-the-good-old-button/</a>
+				https://css-tricks.com/how-to-recreate-the-ripple-effect-of-material-design-buttons/
+        </p>  
+        <div class="bordered-box">
+            <div class="button-container">
+                <div class="button-group">
+                    <button class="primary" onclick="testFunction1">Action</button>
+                    <button class="primary plus" onclick="testFunction2()">Add</button>
+                    <button class="primary minus">Remove</button>
+                </div>
+                <div class="button-group">
+                    <button class="primary">Primary</button>
+                    <button class="secondary">Secondary</button>
+                    <button class="tirtiary">Tirtiary</button>
+                </div>
+                <div class="button-group">
+                    <button class="primary" disabled>Primary (Disabled)</button>
+                    <button class="secondary" disabled>Secondary (Disabled)</button>
+                    <button class="tirtiary" disabled>Tirtiary (Disabled)</button>
+                </div>
+                <div class="button-group">
+                    <button class="primary danger">Primary Danger</button>
+                    <button class="secondary danger">Secondary Danger</button>
+                    <button class="tirtiary danger">Tirtiary Danger</button>
+                </div>
+                <div class="button-group">
+                    <button class="primary positive">Primary Positive</button>
+                    <button class="secondary positive">Secondary Positive</button>
+                    <button class="tirtiary positive">Tirtiary Positive</button>
+                </div>
+            </div>
+        </div>      
+        <div>
+            <div class="code-title-container">
+                <span class="hidden code-title">Button CSS</span>
+                <button class="code-copy">Copy</button>
+            </div>
+            <pre class="hidden" style="height:400px;" id="heading-style-code">
+<code>
+button {
+    cursor: pointer;
+    margin: 5px;
+    padding: 10px;
+
+    border: 0;
+    border-radius: 2px;
+
+    min-width: 50px;;
+    
+    text-align: left;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+
+    transition: filter 200ms ease;
+
+    letter-spacing: 0.1em;
+
+    font-family: Roboto;
+    
+    overflow: hidden;
+    position: relative;
+}
+
+button.thin {
+    padding: 5px 10px 5px 10px;
+}
+button:hover {
+    filter: brightness(115%);
+}
+button:focus {
+    filter: none;
+    /*outline: solid 1px var(--text-light);*/
+    /* box-shadow: none; */
+}
+button[disabled] {
+    filter: brightness(70%);
+    cursor: auto;
+}
+
+button.primary {
+    --background-color: var(--highlight);
+    background-color: var(--background-color);
+    border: none;    
+    color: var(--text-light);
+}
+
+button.secondary {
+    --text-color: var(--highlight);
+
+    color: var(--text-color);
+    border: solid 2px var(--text-color);
+
+    background-color: transparent;    
+}
+
+button.tirtiary {
+    --text-color: var(--highlight);
+    color: var(--text-color);
+
+    padding: 5px;
+
+    text-decoration: underline; 
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+button.positive {
+    --text-color: var(--positive-color);
+    --background-color: var(--positive-color);
+}
+
+button.danger {
+    --text-color: var(--danger-color);
+    --background-color: var(--danger-color);
+}
+
+button.plus::after {
+    content: " +"    
+}
+
+button.minus::after {
+    content: " -"    
+}</code>
+            </pre>
+        </div>
+        <br>
+        <h2>Button ripple effect:</h2>
+        <p>For this to work, the button must have "position:relative" and "overflow:hidden". More info can be found 
+            <a href="https://css-tricks.com/how-to-recreate-the-ripple-effect-of-material-design-buttons/">here</a>.
+        </p>
+        <div class="code-title-container">
+            <span class="hidden code-title">Ripple effect</span>
+            <button class="code-copy">Copy</button>
+        </div>
+        <pre class="hidden" style="height:400px;" id="heading-style-code">
+<code>CSS:
+span.ripple {
+    position: absolute; /* The absolute position we mentioned earlier */
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 600ms linear;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 10;
+}
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+
+Javascript:
+function createRipple(e) {
+    let button = e.currentTarget;
+    
+    const circle = document.createElement("span");
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${e.pageX - (button.offsetLeft + radius)}px`;
+    circle.style.top = `${e.pageY - (button.offsetTop + radius)}px`;
+    circle.classList.add("ripple"); 
+
+    let ripple = document.getElementsByClassName("ripple")[0];
+
+    if (ripple) {
+        console.log("Removed")
+        ripple.remove();
+    }
+
+    button.appendChild(circle);
+}
+            </code>
+        </pre>
+    </div>
+
+    <div class="bordered-box" id="inputs">
+        <h1>Inputs</h1>
+        <p>Take a look at how boostrap does ths: https://github.com/twbs/bootstrap/blob/main/scss/forms/_input-group.scss
+        </p>       
+    </div>
+</div>
+
+<footer>
+</footer>
+
+
+</div>
+</html>
