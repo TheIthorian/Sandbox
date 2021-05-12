@@ -1,0 +1,22 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+:root {
+    /* dark theme */
+    --header-background-dark: #2B4964;
+    --body-background-dark: #2B333A;
+    --body-background-dark2: #4a4a4f;
+
+    --text-light: #ECE5F0;
+    /* --highlight: #f07b48; */
+    --highlight: #e97e50;
+
+    --positive-color: #4e9b4e;
+    --danger-color: #d04545;
+
+    --text-dark: var(--header-background-dark);
+
+    --sidebar-filter: invert(73%) sepia(95%) saturate(256%) hue-rotate(349deg) brightness(96%) contrast(89%);
+    --siderbar-color: #E9C46A;
+    
+    font-family: roboto;
+}

@@ -1,0 +1,87 @@
+
+div.sidebar {
+    grid-area: sidebar;
+    background-color: var(--body-background-dark);
+    border-right: solid 1px var(--highlight);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Link items */
+.sidebar > a.nav-link {
+    padding: 10px;
+    margin-top: 10px;
+
+    font-style: normal;
+    font-weight: 100;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    color: var(--text-light);
+
+    display: inline-block;
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: 
+        letter-spacing 1000ms ease, 
+        color          1000ms ease,
+        border         1000ms ease;
+    
+}
+.sidebar > a.nav-link:first-child {
+    margin-top: 60px;
+}
+
+
+/* https://www.w3schools.com/css/tryit.asp?filename=trycss3_transition_speed */
+.sidebar > a.nav-link:hover {
+    letter-spacing: 0.3em;
+    color: var(--highlight);
+} 
+
+.sidebar > a.nav-link::after {
+    content: "";
+    width: 0px;
+    height: 1px;
+    display: block;
+    background: var(--highlight);
+    transition: 300ms;
+}
+.sidebar > a.nav-link:hover::after {
+    width: 95%;
+}
+
+/* Current page */
+.sidebar > a.nav-link.active {
+    color: var(--highlight);
+}
+.sidebar > a.nav-link.active::after {
+    content: "";
+    width: 95%;
+    height: 1px;
+    display: block;
+    background: var(--highlight);
+    transition: 300ms;
+}
+
+@media (max-width:700px) {
+    .sidebar > a.nav-link:first-child {
+        margin: 0px;
+    }
+    .sidebar > a.nav-link {
+        margin: 0px;
+        width: 80px;
+        text-align: center;
+    }
+    div.sidebar {
+        border: none;
+        border-bottom: solid 1px var(--highlight);
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
