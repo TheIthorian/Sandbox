@@ -1,0 +1,19 @@
+
+.image-group {
+    width: 100%;
+}
+
+.image-group > img {
+    width: 100%;
+    height: auto;
+}
+
+.image-group > .title {
+    width: calc(100% - 10px);
+    height: auto;
+    padding: 5px;
+    background: var(--highlight);
+    color: var(--body-background-dark);
+    margin-top: 10px;
+    cursor: pointer;
+}

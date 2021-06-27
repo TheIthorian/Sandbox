@@ -1,31 +1,141 @@
 
 .input-group {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     grid-template-rows: auto 1fr; 
     grid-template-areas:
         "label label"
-        "input button";
+        "input button"
+        "message message"
+        ;
 
-    width: 100%;
-    margin: 5px;
+    /* width: 100%; */
+    /* margin: 5px; */
+    margin: 5px 0 5px 0;
+    overflow: visible;
 }
 
 .input-group > label {
-    padding-bottom: 5px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
-.input-group > input {
+.input-group input, .input-group select {
     position: relative;
     width: auto;
     outline: none;
     letter-spacing: 0.08em;
     grid-area: input;
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+    min-width: 10px;
+    background-color: var(--text-light);
 }
 
-.input-group > button {
+.input-group .select-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    grid-area: input;
+} 
+
+.select-container > .select-option {
+    padding: 5px;
+    margin: 5px;
+    border: solid 2px var(--highlight);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.select-container > .select-option.selected {
+    background-color: var(--highlight);
+}
+
+.input-group .input-file-container {
+    border: dashed 2px var(--highlight);
+    width: 100%;
+    height: 150px;
+    grid-area: input;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input-file-container h2, 
+.input-file-container h3,
+.input-file-container p {
+    text-align: center;
+    margin: 5px;
+}
+
+.input-file-container img.icon {
+    margin: 5px;
+}
+
+.input-group input.warning {
+    border: solid 2px var(--danger-color);
+    border-radius: 3px;
+}
+
+.input-group button {
     position: relative;
     z-index: 2;
     margin: 0;
     grid-area: button;
+}
+
+.input-group.full {
+    width: calc(100% - 10px);
+}
+.input-group.large{
+    width: calc(100% - 10px);
+    max-width: 800px;
+}
+.input-group.medium {
+    width: calc(100% - 10px);
+    max-width: 500px;
+}
+.input-group.small {
+    width: calc(100% - 10px);
+    max-width: 250px;
+}
+.input-group.xsmall {
+    width: 100px;
+}
+.input-group > select {
+    width: 100% !important; 
+}
+
+.input-group > .error-message {
+    grid-area: message;
+    padding: 2px;
+    margin: 3px 0px 3px 0px;
+    /* border: solid 2px var(--danger-color); */
+    border-radius: 3px;
+    color: var(--danger-color);
+}
+/* .input-group.small { width: 70px; }
+.input-group.medium { width: 260px; }
+.input-group.large { width: 500px; } */
+
+
+.inline-group {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.inline-group > .input-group {
+    padding-right: 10px;
+    padding-left: 10px;
+    /* width: fit-content; */
+}
+.inline-group > .input-group:first-child { padding-left: 0px; }
+.inline-group > .input-group:last-child { padding-right: 0px; }
+
+.form-group > h1  { 
+    margin-bottom: 0 !important;
+    font-size: medium;
 }

@@ -66,7 +66,7 @@ footer {
 @media (max-width:1250px) {
     div.main {
         grid-template-columns: 0px 1fr;
-        grid-template-rows: 125px 50px auto auto 1fr 200px; 
+        grid-template-rows: 125px auto auto auto 1fr 200px; 
 
         grid-template-areas: 
             "header header"

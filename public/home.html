@@ -14,10 +14,12 @@
     <link rel="stylesheet" href="./style/colors.css">
     <link rel="stylesheet" href="./style/buttons.css">
     <link rel="stylesheet" href="./style/inputs.css">
+    <link rel="stylesheet" href="./style/images.css">
 
     <script src="./js/index.js"></script>
     <script src="./js/test.js"></script>
     <script src="./js/button.js"></script>
+    <script src="./js/forms.js"></script>
 
 </head>
 
@@ -31,17 +33,18 @@
 <div class="sidebar">
     <a class="nav-link active" href="#">Design</a>
     <a class="nav-link" href="./Useful-Links.html">Useful Links</a>
+    <a class="nav-link" href="./Other-Projects.html">Other Projects</a>
     <a class="nav-link" href="#">About</a>
 </div>
 
-<div class="intro content">
+<div class="intro content" id="introduction">
+    <h1>Introduction</h1>
     <p>Hi there. Welcome to sandbox. This is where I test styling ideas and practice CSS & Javascript</p>
     <p>This site was written with vanilla javascript, CSS and html. Full code can be found 
-        <a hraf="https://github.com/TheIthorian/Sandbox">here</a>.</p>
+        <a href="https://github.com/TheIthorian/Sandbox">here</a>.</p>
     <h3>Todo:</h3>
     <ul>
         <li>Add input styling</li>
-        <li>Save colors to data object</li>
     </ul>
     <br><h3>Check out my other projects on GitHub:</h3>
     <ul>
@@ -56,7 +59,7 @@
     <div class="bordered-box" id="colors">
         <h1>Colors</h1>
         <p>Feel free to change the colors using the pickers for each section which will alter the style of the entire page.
-            The colors are saved so don't worry about refreshing the page.
+            The colors are saved so you can refresh the page without losing your colors.
         </p>
         <p>You can also import colors from 
             <a href="https://coolors.co/">https://coolors.co/</a>
@@ -96,11 +99,13 @@
         </div>
         
         <div class="color-button-container">
-            <div class="input-group">
+            <div class="input-group full">
                 <label for="coolers-link" >Coolers Link:</label>
                 <input name="coolers-link" id="coolers-link" type="text" >
                 <button class="primary thin" onclick="useCoolersLink()">Save</button>
             </div>
+        </div>
+        <div class="color-button-container">
             <button class="secondary" id="resetColors" onclick="resetColors()">Reset colors</button>
             <button class="secondary" id="randomiseColors" onclick="randomiseColors()">Random colors</button>
             <div class="break"></div>
@@ -124,17 +129,17 @@
     <div class="bordered-box" id="heading-style">
         <h1>Heading style</h1>
         <p>Here's a display of the different heading types from h1 to h3. 
-            I didn't bother with anything over h3 since they're about the 
-            same size as the "p" element.</p>
+            I didn't style anything over h3 since they're about the 
+            same size as the paragraph text.</p>
         <p>New paragraphs have a spacing before, whereas the headings have spacing before and after.</p>
         <h3>Below are samples of each type:</h3>
-        <div class="bordered-box">
+        <div class="bordered-box" id="heading-style-example1">
             <h1>h1: Heading</h1>
             <h2>h2: Sub heading</h2>
             <h3>h3: Highlight</h3>
             <p>p: Paragraph</p>
         </div>
-        <p>Clicking a h1 title will cause its contents to collapse.</p>
+        <p>Clicking a h1 title will cause its contents to collapse. For this to work, the parent element must have a uniqie ID.</p>
         <div>
             <div class="code-title-container">
                 <span class="hidden code-title">Example CSS</span>
@@ -452,8 +457,292 @@ function createRipple(e) {
 
     <div class="bordered-box" id="inputs">
         <h1>Inputs</h1>
-        <p>Take a look at how boostrap does ths: https://github.com/twbs/bootstrap/blob/main/scss/forms/_input-group.scss
+        <p>Take a look at how boostrap does ths: <a href="https://github.com/twbs/bootstrap/blob/main/scss/forms/_input-group.scss">https://github.com/twbs/bootstrap/blob/main/scss/forms/_input-group.scss</a>
         </p>       
+        <p>
+            We should handle inputs for the following types:
+            <ul>
+                <li>Text</li>
+                <li>Number</li>
+                <li>Date</li>
+                <li>Selection (with search)</li>
+                <li>Toggle</li>
+                <li>Checkboxes & Radio buttons</li>
+            </ul>
+        </p>
+        <p>For labels to work, they must be linked to the input's id.</p>        
+        <div class="bordered-box" id="inputs-input-types">
+            <h1>Input Types</h1>
+            <div class="input-group">
+                <label for="text-input">Text:</label>
+                <input name="text-input" id="text-input" type="text">
+            </div>
+            <div class="input-group">
+                <label for="number-input">Number:</label>
+                <input name="number-input" id="number-input" type="number">
+            </div>
+            <div class="input-group">
+                <label for="date-input">Date:</label>
+                <input name="date-input" id="date-input" type="date">
+            </div>
+            <div class="input-group">
+                <label for="select">Select:</label>
+                <select name="select" id="select-input">
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                    <option>Option 4</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="select2">Multi-select:</label>
+                <div name="select2" id="select2" class="select-container multiselect">
+                    <div class="select-option" value="1">Option 1</div>
+                    <div class="select-option" value="2">Option 2</div>
+                    <div class="select-option" value="3">Option 3</div>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="select3">Single-select:</label>
+                <div name="select3" id="select3" class="select-container singleselect">
+                    <div class="select-option" value="1">Option 1</div>
+                    <div class="select-option" value="2">Option 2</div>
+                    <div class="select-option" value="3">Option 3</div>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="file">File:</label>
+                <div name="file" id="file" class="input-file-container">
+                    <img src="assets/img/icons/document.svg" class="icon"> 
+                    <h3>Choose a file or drag it here</h3>
+                    <p>Max file size: 1 MB</p>
+                </div>
+            </div>
+            <input type="file">
+        </div>
+        <div class="bordered-box" id="inputs-input-sizes">
+            <h1>Input Sizes</h1>
+            <div class="input-group full">
+                <label for="full-width">Full width (100%)</label>
+                <input name="full-width" id="full-width" type="text">
+            </div>
+            <div class="input-group large">
+                <label for="large">Large (800px)</label>
+                <input name="large" id="large" type="text">
+            </div>
+            <div class="input-group medium">
+                <label for="medium">Medium (500px)</label>
+                <input name="medium" id="medium" type="text">
+            </div>
+            <div class="input-group small" >
+                <label for="small">Small. E.g email & names (250px)</label>
+                <input name="small" id="small" type="text">
+            </div>
+            <div class="input-group xsmall">
+                <label for="xsmall">XSmall</label>
+                <input name="xsmall" id="xsmall" type="text">
+            </div>
+            <br>
+            <h2>Inline Inputs</h2>
+            <p>Use the inline-group class to put multiple inputs on one line.</p>
+            <div class="inline-group">
+                <div class="input-group full">
+                    <label >Example</label>
+                    <input class="" type="text">
+                </div>
+                <div class="input-group full">
+                    <label >Example</label>
+                    <input class="" type="text">
+                </div>
+            </div>
+            <div class="inline-group">
+                <div class="input-group full">
+                    <label >X</label>
+                    <input class="" type="text">
+                </div>
+                <div class="input-group full">
+                    <label >X</label>
+                    <input class="" type="text">
+                </div>
+                <div class="input-group full">
+                    <label >X</label>
+                    <input class="" type="text">
+                </div>
+                <div class="input-group full">
+                    <label >X</label>
+                    <input class="" type="text">
+                </div>
+            </div>
+        </div>
+        <div class="bordered-box" id="inputs-good-practices">
+            <h1>Good practices</h1>
+            <p>Good practice for input to follow these rules:</p>
+            
+            <div class="bordered-box" id="inputs-good-practices1">
+                <h1>1. Single Columns</h1>
+                <p>Single column layout makes it easier to follow, as your eyes don't have to zig-zag acress the page.</p>
+                <div class="input-group medium">
+                    <label for="name-input-1">Name:</label>
+                    <input class="" name="name-input-1" id="name-input-1" type="text">
+                </div>
+                <div class="input-group medium">
+                    <label for="phone-input-1">Phone:</label>
+                    <input class="" name="phone-input-1" id="phone-input-1" type="text">
+                </div>
+                <div class="input-group medium">
+                    <label for="email-input-1">Email:</label>
+                    <input class="" name="email-input-1" id="email-input-1" type="text">
+                </div>
+                <div class="image-group" id="input-good-practices-example1">
+                    <div class="title">Example</div>
+                    <img src="../public/assets/img/pictures/inputs-1.png">
+                </div>
+            </div>
+            <div class="bordered-box" id="inputs-good-practices2">
+                <h1>2. Related inputs</h1>
+                <p>It's okay to put multiple related inputs on the same line.</p>
+                    <div class="inline-group">
+                        <div class="input-group medium">
+                            <label for="name-input-2">First Name:</label>
+                            <input class="" name="name-input-2" id="name-input-2" type="text">
+                        </div>
+                        <div class="input-group medium">
+                            <label for="surname-input-2">Last Name:</label>
+                            <input class="" name="surname-input-2" id="surname-input-2" type="text">
+                        </div>
+                    </div>
+                    <div class="inline-group">
+                        <div class="input-group small">
+                            <label for="city-input-2">City:</label>
+                            <input name="city-input-2" id="city-input-2" type="text">
+                        </div>
+                        <div class="input-group small">
+                            <label for="country-input-2">Country:</label>
+                            <select class="">
+                                <option>UK</option selected>
+                                <option>Not UK</option>
+                            </select>
+                        </div>
+                        <div class="input-group xsmall">
+                            <label for="postcode-input-2">Postcode:</label>
+                            <input class="" name="postcode-input-2" id="postcode-input-2" type="text">
+                        </div>
+                    </div>
+                    <div class="image-group" id="inputs-good-practices-example2">
+                        <div class="title">Example</div>
+                        <img src="../public/assets/img/pictures/inputs-2.png">
+                    </div>
+                </div>
+
+                <div class="bordered-box" id="inputs-good-practices3">
+                    <h1>3. Form Groups</h1>
+                    <p>It can make sense to seperate inputs into different frames / groups</p>
+                    <div class="form-group">
+                        <h1>Personal Details</h1>
+                        <div class="inline-group">
+                            <div class="input-group medium">
+                                <label for="name-input-3">First Name:</label>
+                                <input class="" name="name-input-3" id="name-input-3" type="text">
+                            </div>
+                            <div class="input-group medium">
+                                <label for="surname-input-3">Last Name:</label>
+                                <input class="" name="surname-input-3" id="surname-input-3" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h1>Address</h1>
+                        <div class="inline-group">
+                            <div class="input-group small">
+                                <label for="city-input-3">City:</label>
+                                <input name="city-input-3" id="city-input-3" type="text">
+                            </div>
+                            <div class="input-group small">
+                                <label>Country:</label>
+                                <select class="">
+                                    <option>UK</option selected>
+                                    <option>Not UK</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group xsmall">
+                            <label for="postcode-input-3">Postcode:</label>
+                            <input class="" type="text" name="postcode-input-3" id="postcode-input-3">
+                        </div>
+                    </div>
+                    <button class="primary" style="margin-left:0px;">Submit</button>
+                    <div class="image-group" id="inputs-good-practices-example3">
+                        <div class="title">Example</div>
+                        <img src="../public/assets/img/pictures/inputs-3.png">
+                    </div>
+                </div>
+
+                <div class="bordered-box" id="inputs-good-practices4">
+                    <h1>4. Validations</h1>
+                    <p>Show validations next to the corresponding inputs. The input-group will have the validation attribute
+                        (Required, Read-Only, Validated, Special).
+                    </p>
+                    <div class="form-group" id="validation-form1">
+                        <div class="input-group medium">
+                            <label for="firstname-input-4">First Name (Required):</label>
+                            <input class="required" name="firstname-input-4" id="firstname-input-4" type="text">
+                        </div>
+                        <div class="input-group medium">
+                            <label for="surname-input-4">Last Name (Read-Only):</label>
+                            <input class="readonly" name="surname-input-4" id="surname-input-4" type="text">
+                        </div>
+                        <div class="input-group medium">
+                            <label for="phone-input-4">Phone Number (Validated by regex ^[0-9+\-()]+$):</label>
+                            <input class="regex required" name="phone-input-4" id="phone-input-4" type="text" 
+                                data-validation="^[0-9+\-()]+$" 
+                                data-message="Phone Number may only contain number and the following characters: +-()">
+                        </div>
+                        <div class="input-group medium">
+                            <label for="notes-input-4">Age (Validated by function):</label>
+                            <input class="special required" name="notes-input-4" id="notes-input-4" type="number" data-validation="between10And100">
+                        </div>
+                        <div class="input-group medium">
+                            <label for="password-input-4">Password (Validated by function):</label>
+                            <input class="special required" name="password-input-4" id="password-input-4" type="text" 
+                                data-validation="validatePassword">
+                        </div>
+                        <button class="primary" style="margin-left:0px;"
+                            onclick="validateForm('validation-form1')">
+                            Submit
+                        </button>
+                    </div>
+                    <div class="image-group" id="inputs-good-practices-example4">
+                        <div class="title">Example</div>
+                        <img src="../public/assets/img/pictures/inputs-5.png">
+                    </div>
+                    <div class="image-group" id="inputs-good-practices-example5">
+                        <div class="title">Example</div>
+                        <img src="../public/assets/img/pictures/inputs-7.png">
+                    </div>
+                </div>
+
+                <div class="bordered-box" id="other-good-practices">
+                    <h1>Other Good Practices</h1>
+                    <p>More info here <a href="https://www.reddit.com/r/webdev/comments/nm6wcl/18_cards_of_how_to_design_web_forms/">https://www.reddit.com/r/webdev/comments/nm6wcl/18_cards_of_how_to_design_web_forms/</a></p>  
+                    <div class="image-group">
+                        <!-- <img src="../public/assets/img/pictures/inputs-2.png"> -->
+                        <!-- <img src="../public/assets/img/pictures/inputs-4.png"> -->
+                        <!-- <img src="../public/assets/img/pictures/inputs-5.png"> -->
+                        <!-- <img src="../public/assets/img/pictures/inputs-6.png"> -->
+                        <!-- <img src="../public/assets/img/pictures/inputs-7.png"> -->
+                        <!-- <img src="../public/assets/img/pictures/inputs-8.png"> -->
+                        <!-- <img src="../public/assets/img/pictures/inputs-9.png"> -->
+                        <img src="../public/assets/img/pictures/inputs-10.png">
+                        <img src="../public/assets/img/pictures/inputs-11.png">
+                        <img src="../public/assets/img/pictures/inputs-12.png">
+                        <!-- <img src="../public/assets/img/pictures/inputs-13.png"> -->
+                        <img src="../public/assets/img/pictures/inputs-14.png">
+                        <img src="../public/assets/img/pictures/inputs-15.png">
+                        <img src="../public/assets/img/pictures/inputs-16.png">
+                        <img src="../public/assets/img/pictures/inputs-17.png">
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
 

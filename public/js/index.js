@@ -1,5 +1,25 @@
 window.onload = function () {
 
+
+    // select inputs
+    let selectOptions = document.getElementsByClassName("select-option");
+    for (option of selectOptions) {       
+        option.addEventListener("click", function(event) {
+            let optionElement = event.target;
+
+            // single select
+            if (!optionElement.parentNode.classList.contains("multiselect")) {
+                for (otherOption of optionElement.parentNode.children) {
+                    console.log(otherOption);
+                    otherOption.classList.remove("selected");
+                }
+            }
+            
+            optionElement.classList.toggle("selected");
+        });
+    }
+
+
     // Sets ripple for buttons in buttons.js
     let allButtons = document.getElementsByTagName("button");
     for (button of allButtons) {
@@ -48,6 +68,11 @@ window.onload = function () {
     // Add minimiser for code
     for (const element of document.getElementsByClassName("code-title")) {
         element.addEventListener("click", minimiseCode);
+    }
+
+    // Add minimiser for titles of graphs and images
+    for (const element of document.getElementsByClassName("title")) {
+        element.addEventListener("click", minimiseContentWithSave);
     }
 
     // Add copy code function
@@ -109,10 +134,13 @@ window.onload = function () {
         // Set state of content boxes
         if (localStorage.getItem("openContentState")) {
             for (const id of JSON.parse(localStorage.getItem("openContentState"))) {
-                let element = document.getElementById(id).getElementsByTagName("h1")[0];
+                //let element = document.getElementById(id).getElementsByTagName("h1")[0];
+                let element = document.getElementById(id).firstElementChild;
+                console.log(element);
                 minimiseContent(element);
             }
         }
+
     } catch(err)  {console.log(err); localStorage.clear(); location.reload();}
 }
 
@@ -274,6 +302,22 @@ function minimiseContent(element) {
     } 
 }
 
+function minimiseSibling(element) {
+    let hidden = element.classList.contains("hidden");
+    console.log(element);
+
+    if (hidden) {
+        element.classList.remove("hidden");
+        let next = element.nextElementSibling;
+        next.style.display = null;              
+    }
+    else {
+        element.classList.add("hidden");
+        let next = element.nextElementSibling;
+        next.style.display = 'none';
+    } 
+}
+
 function minimiseContentWithSave(event) {
     console.log(event);
     let element = event.target;
@@ -313,4 +357,41 @@ function minimiseContentWithSave(event) {
 
     } 
     console.log("New LocalStorage: ", localStorage.getItem("openContentState"));
+}
+
+
+function minimiseSiblingWithSave(event) {
+    console.log(event);
+    let element = event.target;
+    let hidden = element.classList.contains("hidden");
+    console.log(element);
+
+    // Remember the state
+    let openContentState = [];
+    if (localStorage.getItem("openContentSiblingState")) {openContentState = JSON.parse(localStorage.getItem("openContentSiblingState"));}
+    //console.log("Currently stored: ", openContentState);
+
+
+    if (hidden) {
+        element.classList.remove("hidden");
+        let next = element.nextElementSibling;
+        next.style.display = null;
+
+        let new_openContentState = openContentState.filter(function(value, index, arr){
+            return value != element.parentNode.id;
+        });
+        localStorage.setItem("openContentSiblingState", JSON.stringify(new_openContentState));
+        
+    }
+    else {
+        element.classList.add("hidden");
+        let next = element.nextElementSibling;
+        next.style.display = 'none';
+
+        openContentState.push(element.parentNode.id);
+        console.log("Newly stored: ", openContentState);
+        localStorage.setItem("openContentSiblingState", JSON.stringify(openContentState));
+
+    } 
+    console.log("New LocalStorage: ", localStorage.getItem("openContentSiblingState"));
 }

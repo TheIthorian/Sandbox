@@ -68,7 +68,7 @@ div.sidebar {
     transition: 300ms;
 }
 
-@media (max-width:700px) {
+@media (max-width:1250px) {
     .sidebar > a.nav-link:first-child {
         margin: 0px;
     }
@@ -83,5 +83,16 @@ div.sidebar {
         flex-direction: row;
         justify-content: center;
         align-items: center;
+    }
+}
+
+
+@media (max-width:400px) {
+    div.sidebar {
+        flex-direction: column;
+        height: fit-content;
+    }
+    .sidebar > a.nav-link {
+        width: fit-content;
     }
 }
