@@ -20,6 +20,7 @@
     <script src="./js/test.js"></script>
     <script src="./js/button.js"></script>
     <script src="./js/forms.js"></script>
+    <script src="./js/inputs.js"></script>
 
 </head>
 
@@ -511,14 +512,15 @@ function createRipple(e) {
                 </div>
             </div>
             <div class="input-group">
-                <label for="file">File:</label>
-                <div name="file" id="file" class="input-file-container">
+                <label for="file-input1" style="cursor:pointer;">File:
+                <div name="file" id="file" class="input-file-container" >
                     <img src="assets/img/icons/document.svg" class="icon"> 
                     <h3>Choose a file or drag it here</h3>
                     <p>Max file size: 1 MB</p>
-                </div>
+                    <div class="gallery"></div>
+                </div></label>
             </div>
-            <input type="file">
+            <input id="file-input1" type="file" multiple>
         </div>
         <div class="bordered-box" id="inputs-input-sizes">
             <h1>Input Sizes</h1>

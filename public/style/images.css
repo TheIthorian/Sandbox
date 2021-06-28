@@ -6,6 +6,19 @@
 .image-group > img {
     width: 100%;
     height: auto;
+    
+}
+
+.image-group.project {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-group.project > img {
+    border: solid 2px var(--highlight);
+    border-radius: 5px;
+    max-width: 600px;
 }
 
 .image-group > .title {
