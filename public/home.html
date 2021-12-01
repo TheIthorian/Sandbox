@@ -21,6 +21,8 @@
     <script src="./js/button.js"></script>
     <script src="./js/forms.js"></script>
     <script src="./js/inputs.js"></script>
+    <script src="./js/colors.js"></script>
+    <script src="./js/minimiser.js"></script>
 
 </head>
 
@@ -45,7 +47,6 @@
         <a href="https://github.com/TheIthorian/Sandbox">here</a>.</p>
     <h3>Todo:</h3>
     <ul>
-        <li>Add input styling</li>
     </ul>
     <br><h3>Check out my other projects on GitHub:</h3>
     <ul>
@@ -129,9 +130,7 @@
 
     <div class="bordered-box" id="heading-style">
         <h1>Heading style</h1>
-        <p>Here's a display of the different heading types from h1 to h3. 
-            I didn't style anything over h3 since they're about the 
-            same size as the paragraph text.</p>
+        <p>Here's a display of the different heading types from h1 to h3.</p>
         <p>New paragraphs have a spacing before, whereas the headings have spacing before and after.</p>
         <h3>Below are samples of each type:</h3>
         <div class="bordered-box" id="heading-style-example1">
@@ -701,7 +700,8 @@ function createRipple(e) {
                         </div>
                         <div class="input-group medium">
                             <label for="notes-input-4">Age (Validated by function):</label>
-                            <input class="special required" name="notes-input-4" id="notes-input-4" type="number" data-validation="between10And100">
+                            <input class="special required" name="notes-input-4" id="notes-input-4" type="number" 
+                                data-validation="between10And100">
                         </div>
                         <div class="input-group medium">
                             <label for="password-input-4">Password (Validated by function):</label>

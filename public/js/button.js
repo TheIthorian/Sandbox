@@ -1,4 +1,15 @@
 
+window.addEventListener("load", function(){
+    // Sets ripple for buttons in buttons.js
+    let allButtons = document.getElementsByTagName("button");
+    for (button of allButtons) {
+        if (button.classList.contains("primary") || button.classList.contains("secondary")) {
+            button.addEventListener("click", createRipple);
+        }
+    }
+});
+
+
 function createRipple(e) {
     let button = e.currentTarget;
     

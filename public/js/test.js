@@ -5,6 +5,6 @@ const testFunction1 = () => {
 }
 
 function testFunction2() {
-    alert("Test Function2");
+    return ;
 }
 
