@@ -23,4 +23,5 @@
 
 .icon {
     filter: brightness(10);
+    height: 20px;
 }
